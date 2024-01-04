@@ -2,7 +2,7 @@ vite-plugin-canyon
 ==========================
 
 
-一个 Vite 插件，用于配置canyon变量，以便在构建时进行仓库分析。
+A Vite plugin to configure canyon variables for repository analysis at build time.
 
 Installation
 --------------------------
@@ -30,29 +30,19 @@ Creates the vite plugin from a set of optional plugin options.
 *  `opts.commitSha {string}` - This should not commonly be used. Manually specify the commit SHA.
 *  `opts.projectID {string}` - This should not commonly be used. Manually specify the project ID.
 *  `opts.branch {string}` - This should not commonly be used. Manually specify the branch.
-*  `opts.dsn {string}` - This should not commonly be used. Manually specify the DSN.
-*  `opts.reporter {string}` - This should not commonly be used. Manually specify the reporter.
-*  `opts.reportID {string}` - This should not commonly be used. Manually specify the report ID.
-*  `opts.instrumentCwd {string}` - Optional string of the current working directory, used for the include/exclude patterns. Defaults to `process.cwd()`.
+*  `opts.dsn {string}` - This should not commonly be used. Change the upload host. Defaults to https://canyon.io.
+*  `opts.reporter {string}` - The Canyon upload token which can be found in the settings tab of the repository on Canyon.
+*  `opts.instrumentCwd {string}` - Optional string of the current working directory. Defaults to `process.cwd()`.
 
 Notes
 --------------------------
 
-As of v2.1.0 you can toggle the coverage off by setting the env variable `VITE_COVERAGE='false'`, by default it will always instrument the code. To require the explicit definition of the variable, set the option `requireEnv` to **true**.
-
-This plugin also requires the Vite configuration [build.sourcemap](https://vitejs.dev/config/#build-sourcemap) to be set to either **true**, **'inline'**, **'hidden'**.
-But the plugin will automatically default to **true** if it is missing in order to give accurate code coverage.
-The plugin will notify when this happens in order for a developer to fix it. This notification will show even when the plugin is disabled by e.g `opts.requireEnv`, `VITE_COVERAGE=false`. This is due to a limitation of the API for this kind of feature.
-
-
-
-
-
+Plugin configuration greater than environment variables.
 
 Examples
 --------------------------
 
-要使用此插件，请使用 vite.config.js 进行定义
+To use this plugin define it using vite.config.js
 
 ```js
 // vite.config.js

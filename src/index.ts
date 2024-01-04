@@ -8,7 +8,6 @@ export interface canyonPluginOptions {
   projectID?: string;
   compareTarget?: string;
   dsn?: string;
-  reportID?: string;
   reporter?: string;
   instrumentCwd?: string;
   branch?: string;
@@ -32,14 +31,12 @@ function instrumentedData(args: canyonPluginOptions): string {
   const canyon = {
     // gitlab流水线自带
     commitSha: args.commitSha || process.env['CI_COMMIT_SHA'] || '',
-    projectID: args.projectID || process.env['CI_PROJECT_ID'] || '',
     branch: args.branch || process.env['CI_COMMIT_REF_NAME'] || '',
     // 自己配置
     dsn: args.dsn || process.env['CANYON_DSN'] || '',
     reporter: args.reporter || process.env['CANYON_REPORTER'] || '',
     // 可选
     compareTarget: args.compareTarget,
-    reportID: args.reportID,
     // 自动获取
     instrumentCwd: args.instrumentCwd || process.cwd(),
   }
