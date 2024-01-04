@@ -1,4 +1,4 @@
-vite-plugin-istanbul
+vite-plugin-canyon
 ==========================
 
 
@@ -16,26 +16,24 @@ API
 --------------------------
 
 ```js
-import IstanbulPlugin from 'vite-plugin-istanbul';
+import CanyonPlugin from 'vite-plugin-canyon';
 ```
 
-### [IstanbulPlugin( [ opts ] )](#istanbul-plugin)
+### [CanyonPlugin( [ opts ] )](#canyon-plugin)
 
 Creates the vite plugin from a set of optional plugin options.
 
 **Returns:** Vite Plugin
 
 #### Parameters
-*  `opts {IstanbulPluginOptions}` - Object of optional options to pass to the plugin.
-*  `opts.cwd {string}` - Optional string of the current working directory, used for the include/exclude patterns. Defaults to `process.cwd()`.
-*  `opts.include {string|string[]}` - Optional string or array of strings of glob patterns to include.
-*  `opts.exclude {string|string[]}` - Optional string or array of strings of glob patterns to exclude.
-*  `opts.extension {string|string[]}` - Optional string or array of strings of extensions to include (dot prefixed like .js or .ts). By default this is set to `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx', '.vue']`.
-*  `opts.requireEnv {boolean}` - Optional boolean to require the environment variable (defaults to **VITE_COVERAGE**) to equal `true` in order to instrument the code. Otherwise it will instrument even if env variable is not set. However if `requireEnv` is not set the instrumentation will stop if the environment variable is equal to `false`.
-*  `opts.cypress {boolean}` - Optional boolean to change the environment variable to **CYPRESS_COVERAGE** instead of **VITE_COVERAGE**. For ease of use with `@cypress/code-coverage``.
-*  `opts.checkProd {boolean}` - Optional boolean to enforce the plugin to skip instrumentation for production environments. Looks at Vite's **isProduction** key from the `ResolvedConfig`.
-*  `opts.forceBuildInstrument {boolean}` - Optional boolean to enforce the plugin to add instrumentation in build mode. Defaults to false.
-*  `opts.nycrcPath {string}` - Path to specific nyc config to use instead of automatically searching for a nycconfig. This parameter is just passed down to `@istanbuljs/load-nyc-config`.
+*  `opts {CanyonPluginOptions}` - Object of optional options to pass to the plugin.
+*  `opts.commitSha {string}` - This should not commonly be used. Manually specify the commit SHA.
+*  `opts.projectID {string}` - This should not commonly be used. Manually specify the project ID.
+*  `opts.branch {string}` - This should not commonly be used. Manually specify the branch.
+*  `opts.dsn {string}` - This should not commonly be used. Manually specify the DSN.
+*  `opts.reporter {string}` - This should not commonly be used. Manually specify the reporter.
+*  `opts.reportID {string}` - This should not commonly be used. Manually specify the report ID.
+*  `opts.instrumentCwd {string}` - Optional string of the current working directory, used for the include/exclude patterns. Defaults to `process.cwd()`.
 
 Notes
 --------------------------
@@ -48,19 +46,6 @@ The plugin will notify when this happens in order for a developer to fix it. Thi
 
 
 
-This table is a quick TLDR for the rest of this readme and there are more advanced docs available.
-
-| Option name | Description | Type | Default |
-| ----------- | ----------- | ---- | ------- |
-| `all` | Whether or not to instrument all files (not just the ones touched by your test suite) | `Boolean` | `false` |
-| `check-coverage` | Check whether coverage is within thresholds, fail if not | `Boolean` | `false` |
-| `extension` | List of extensions that nyc should attempt to handle in addition to `.js` | `Array<String>` | `['.js', '.cjs', '.mjs', '.ts', '.tsx', '.jsx']` |
-| `include` | See [selecting files for coverage] for more info | `Array<String>` | `['**']`|
-| `exclude` | See [selecting files for coverage] for more info | `Array<String>` | [list](https://github.com/istanbuljs/schema/blob/master/default-exclude.js) |
-| `reporter` | May be set to a [built-in coverage reporter](https://istanbul.js.org/docs/advanced/alternative-reporters/) or an npm package (dev)dependency | `Array<String>` | `['text']` |
-| `report-dir` | Where to put the coverage report files | `String` | `./coverage` |
-| `skip-full` | Don't show files with 100% statement, branch, and function coverage | `Boolean` | `false` |
-| `temp-dir` | Directory to output raw coverage information to | `String` | `./.nyc_output` |
 
 
 
