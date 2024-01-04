@@ -33,8 +33,8 @@ function instrumentedData(args: canyonPluginOptions): string {
     commitSha: args.commitSha || process.env['CI_COMMIT_SHA'] || '',
     branch: args.branch || process.env['CI_COMMIT_REF_NAME'] || '',
     // 自己配置
-    dsn: args.dsn || process.env['CANYON_DSN'] || '',
-    reporter: args.reporter || process.env['CANYON_REPORTER'] || '',
+    dsn: args.dsn || process.env['DSN'] || '',
+    reporter: args.reporter || process.env['REPORTER'] || '',
     // 可选
     compareTarget: args.compareTarget,
     // 自动获取
