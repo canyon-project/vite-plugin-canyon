@@ -1,6 +1,8 @@
 import {Plugin, createLogger} from 'vite';
 import picocolors from 'picocolors';
+
 const {green} = picocolors;
+
 export interface canyonPluginOptions {
   commitSha?: string;
   projectID?: string;
@@ -26,20 +28,20 @@ function shouldInstrument(filename: string) {
   return DEFAULT_EXTENSION.some(ext => filename.endsWith(ext));
 }
 
-function instrumentedData(args:canyonPluginOptions): string {
+function instrumentedData(args: canyonPluginOptions): string {
   const canyon = {
     // gitlab流水线自带
-    commitSha: args.commitSha||process.env['CI_COMMIT_SHA']||'',
-    projectID: args.projectID||process.env['CI_PROJECT_ID']||'',
-    branch: args.branch||process.env['CI_COMMIT_REF_NAME']||'',
+    commitSha: args.commitSha || process.env['CI_COMMIT_SHA'] || '',
+    projectID: args.projectID || process.env['CI_PROJECT_ID'] || '',
+    branch: args.branch || process.env['CI_COMMIT_REF_NAME'] || '',
     // 自己配置
-    dsn: args.dsn||process.env['CANYON_DSN']||'',
-    reporter: args.reporter||process.env['CANYON_REPORTER']||'',
+    dsn: args.dsn || process.env['CANYON_DSN'] || '',
+    reporter: args.reporter || process.env['CANYON_REPORTER'] || '',
     // 可选
     compareTarget: args.compareTarget,
     reportID: args.reportID,
     // 自动获取
-    instrumentCwd: args.instrumentCwd||process.cwd(),
+    instrumentCwd: args.instrumentCwd || process.cwd(),
   }
   return `(new Function("return this")()).__canyon__ = ${JSON.stringify(canyon)}`;
 }
