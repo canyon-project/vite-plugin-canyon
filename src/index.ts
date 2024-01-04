@@ -37,7 +37,7 @@ function instrumentedData() {
 export default function canyonPlugin(opts: canyonPluginOptions = {}): Plugin {
   const logger = createLogger('info', {prefix: 'vite-plugin-canyon'});
   const canyonStr = instrumentedData();
-  logger.warn(`${PLUGIN_NAME}> ${green(`被插入的数据为:${canyonStr}`)}`);
+  logger.warn(`${PLUGIN_NAME}> ${green(`instrumented data: ${canyonStr}`)}`);
   return {
     name: PLUGIN_NAME,
     enforce: 'post',
