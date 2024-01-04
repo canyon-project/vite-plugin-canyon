@@ -55,12 +55,12 @@ export default {
   plugins: [
     istanbul(),
     canyon({
-      "commitSha": "axx",
-      "projectID": "xxxxx",
-      "branch": "masterfffffff",
-      "dsn": "sfsdf",
-      "reporter": "sdfsdf",
-      "instrumentCwd": "/Users/zhangtao/Desktop/vite-project11111"
+      "commitSha": "65b05e197834740015c93ee7640777a90683cab5",
+      "projectID": "230614",
+      "branch": "dev",
+      "dsn": "https://canyon.io",
+      "reporter": "canyon-upload-token",
+      "instrumentCwd": "/path/project"
     })
   ],
 };
