@@ -30,8 +30,9 @@ function shouldInstrument(filename: string) {
 function instrumentedData(args: canyonPluginOptions): string {
   const canyon = {
     // gitlab流水线自带
+    projectID: args.projectID || process.env['CI_PROJECT_ID'] || '',
     commitSha: args.commitSha || process.env['CI_COMMIT_SHA'] || '',
-    branch: args.branch || process.env['CI_COMMIT_REF_NAME'] || '',
+    branch: args.branch || process.env['CI_COMMIT_BRANCH'] || '',
     // 自己配置
     dsn: args.dsn || process.env['DSN'] || '',
     reporter: args.reporter || process.env['REPORTER'] || '',
