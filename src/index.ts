@@ -33,7 +33,7 @@ function instrumentedData(args: canyonPluginOptions): string {
     // gitlab流水线自带
     projectID: args.projectID || process.env['CI_PROJECT_ID'] || '',
     commitSha: args.commitSha || process.env['CI_COMMIT_SHA'] || '',
-    branch: args.branch || process.env['CI_COMMIT_BRANCH'] || '',
+    branch: args.branch || process.env['CI_COMMIT_BRANCH'] || process.env['CI_COMMIT_REF_NAME'] ||'',
     // 自己配置
     dsn: args.dsn || process.env['DSN'] || '',
     reporter: args.reporter || process.env['REPORTER'] || '',
