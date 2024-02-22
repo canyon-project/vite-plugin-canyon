@@ -28,7 +28,6 @@ function shouldInstrument(filename: string) {
 }
 
 function instrumentedData(args: canyonPluginOptions): string {
-  console.log(process.env,'process.env')
   const canyon = {
     // gitlab流水线自带
     projectID: args.projectID || process.env['CI_PROJECT_ID'] || '',
